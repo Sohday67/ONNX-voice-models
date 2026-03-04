@@ -7,6 +7,3 @@ onnxruntime>=1.16.0
 
 # For NVIDIA Parakeet-TDT conversion
 nemo_toolkit[asr]>=1.22.0
-
-# For OLMoASR conversion
-olmoasr>=0.1.0

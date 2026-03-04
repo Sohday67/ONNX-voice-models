@@ -72,6 +72,18 @@ python scripts/convert_olmoasr.py --variant base
 Output files (in `models/olmoasr/olmoasr-{tiny,base}-en/`):
 - `encoder_model.onnx` — Audio encoder
 - `decoder_model.onnx` — Text decoder
+- `decoder_with_past_model.onnx` — Text decoder (with KV-cache support)
+- `config.json`, tokenizer files — For pre/post-processing
+
+## Pre-Converted Models
+
+The `converted/` folder contains pre-converted ONNX models ready for browser use. These files are tracked with [Git LFS](https://git-lfs.github.com/).
+
+To clone with the ONNX files:
+```bash
+git lfs install
+git clone https://github.com/Sohday67/ONNX-voice-models.git
+```
 
 ## Browser Usage
 
@@ -100,10 +112,31 @@ const decoder = await ort.InferenceSession.create('./decoder_model_merged.onnx')
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-└── scripts/
-    ├── convert_distil_small_en.py    # distil-whisper/distil-small.en
-    ├── convert_parakeet_tdt.py       # nvidia/parakeet-tdt_ctc-110m
-    └── convert_olmoasr.py            # allenai/OLMoASR tiny.en & base.en
+├── .gitattributes
+├── scripts/
+│   ├── convert_distil_small_en.py    # distil-whisper/distil-small.en
+│   ├── convert_parakeet_tdt.py       # nvidia/parakeet-tdt_ctc-110m
+│   └── convert_olmoasr.py            # allenai/OLMoASR tiny.en & base.en
+└── converted/                        # Pre-converted ONNX models (Git LFS)
+    ├── distil-small-en/
+    │   ├── encoder_model.onnx
+    │   ├── decoder_model.onnx
+    │   ├── decoder_with_past_model.onnx
+    │   └── config/tokenizer files
+    ├── parakeet-tdt-110m/
+    │   ├── encoder-model.onnx
+    │   └── decoder_joint-model.onnx
+    └── olmoasr/
+        ├── olmoasr-tiny-en/
+        │   ├── encoder_model.onnx
+        │   ├── decoder_model.onnx
+        │   ├── decoder_with_past_model.onnx
+        │   └── config/tokenizer files
+        └── olmoasr-base-en/
+            ├── encoder_model.onnx
+            ├── decoder_model.onnx
+            ├── decoder_with_past_model.onnx
+            └── config/tokenizer files
 ```
 
 ## Requirements
@@ -111,3 +144,4 @@ const decoder = await ort.InferenceSession.create('./decoder_model_merged.onnx')
 - Python 3.9+
 - ~8 GB RAM (for the larger models during conversion)
 - Internet connection (to download models from Hugging Face)
+- [Git LFS](https://git-lfs.github.com/) (to clone the pre-converted ONNX files)

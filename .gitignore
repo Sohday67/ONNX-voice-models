@@ -1,7 +1,10 @@
 # Model outputs
 models/
-*.onnx
 *.onnx_data
+
+# Allow converted ONNX models (tracked by Git LFS)
+!converted/
+!converted/**
 
 # Python
 __pycache__/
