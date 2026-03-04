@@ -16,7 +16,8 @@ import argparse
 import sys
 from pathlib import Path
 
-from optimum.onnxruntime import ORTModelForSpeechSeq2Seq
+from optimum.onnxruntime import ORTModelForSpeechSeq2Seq, ORTQuantizer
+from optimum.onnxruntime.configuration import AutoQuantizationConfig
 from transformers import AutoProcessor
 
 
@@ -51,9 +52,6 @@ def convert_model(output_dir: str, quantize: bool = False) -> None:
     processor.save_pretrained(str(output_path))
 
     if quantize:
-        from optimum.onnxruntime import ORTQuantizer
-        from optimum.onnxruntime.configuration import AutoQuantizationConfig
-
         print("Applying dynamic quantization...")
         qconfig = AutoQuantizationConfig.avx512_vnni(is_static=False)
 

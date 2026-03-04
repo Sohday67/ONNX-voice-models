@@ -16,6 +16,7 @@ import argparse
 import sys
 from pathlib import Path
 
+import onnx
 import olmoasr
 import torch
 
@@ -109,8 +110,6 @@ def convert_variant(variant: str, output_dir: str) -> None:
     export_decoder(model, variant_dir / "decoder_model.onnx")
 
     # Verify the exported models
-    import onnx
-
     for onnx_file in variant_dir.glob("*.onnx"):
         onnx_model = onnx.load(str(onnx_file))
         onnx.checker.check_model(onnx_model)
