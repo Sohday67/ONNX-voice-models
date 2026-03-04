@@ -1,0 +1,12 @@
+# Core dependencies for ONNX model conversion
+torch>=2.0.0
+transformers>=4.35.0
+optimum[onnxruntime]>=1.14.0
+onnx>=1.14.0
+onnxruntime>=1.16.0
+
+# For NVIDIA Parakeet-TDT conversion
+nemo_toolkit[asr]>=1.22.0
+
+# For OLMoASR conversion
+olmoasr>=0.1.0
