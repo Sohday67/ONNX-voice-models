@@ -1,0 +1,9 @@
+{
+  "model_type": "parakeet-tdt",
+  "architecture": "EncDecHybridRNNTCTCBPEModel",
+  "encoder": "FastConformer",
+  "sample_rate": 16000,
+  "vocab_size": 1024,
+  "source": "nvidia/parakeet-tdt_ctc-110m",
+  "num_params": "110M"
+}
